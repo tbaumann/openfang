@@ -31,23 +31,22 @@
           atk
           glib
           gtk3
-          #gtk4 #try without
           openssl
           pkg-config
           webkitgtk_4_1
         ];
 
-        packages.default = config.packages.openfang-cli;
+        packages.default = self'.packages.openfang-cli;
         apps = {
           openfang-cli = {
-            program = "${config.packages.openfang-cli}/bin/openfang";
+            program = "${self'.packages.openfang-cli}/bin/openfang";
             meta.description = "CLI tool for the OpenFang Agent OS";
           };
           openfang-desktop = {
-            program = "${config.packages.openfang-desktop}/bin/openfang-desktop";
+            program = "${self'.packages.openfang-desktop}/bin/openfang-desktop";
             meta.description = "Native desktop application for the OpenFang Agent OS (Tauri 2.0)";
           };
-          default = config.apps.openfang-cli;
+          default = self'.apps.openfang-cli;
         };
       };
       flake = {
